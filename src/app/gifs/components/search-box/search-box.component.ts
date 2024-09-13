@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { GifsService } from '../../services/gifs.service';
 
 @Component({
   selector: 'app-search-box',
@@ -6,17 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './search-box.component.scss'
 })
 export class SearchBoxComponent implements OnInit {
-  
-  
-  
-  
-  
-  constructor(){
+  @ViewChild('txtTagInput') tagInput?:ElementRef<HTMLInputElement>;
+   
+  constructor(private gifsService: GifsService){
   }
   
   
   ngOnInit(): void {
     
+  }
+
+
+
+  // searchtag(newTag:string){
+  //   console.log(newTag);
+  // }
+  searchtag(){
+    const newTag = this.tagInput?.nativeElement.value;
+    this.gifsService.searchTag(newTag!);
+    this.tagInput!.nativeElement.value='';
   }
 
 }
