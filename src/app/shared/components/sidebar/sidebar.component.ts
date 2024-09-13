@@ -11,7 +11,9 @@ export class SidebarComponent implements OnInit {
   constructor(private gifsService:GifsService){
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   get tags():string[]{
     
